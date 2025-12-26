@@ -1,0 +1,16 @@
+project_id = "veppaccbuixetzmvshjk"
+
+[functions.test-connection]
+verify_jwt = false
+
+[functions.encrypt-credentials]
+verify_jwt = false
+
+[functions.execute-backup]
+verify_jwt = true
+
+[functions.scheduled-backup]
+verify_jwt = false
+
+[functions.download-backup]
+verify_jwt = true

@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # The API service
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - redis
+    volumes:
+      - ./storage:/app/storage
+
+  # The Background Worker (Same image, different command)
+  worker:
+    build: .
+    command: celery -A app.core.celery_app worker --loglevel=info
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - api
+    volumes:
+      - ./storage:/app/storage
+
+  # Redis for Celery tasks
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  storage:

@@ -1,0 +1,71 @@
+# ==============================================================================
+# PG Backup Pro - Unified Gitignore (Frontend & Backend)
+# ==============================================================================
+
+# --- Environment Variables (CRITICAL: NEVER COMMIT THESE) ---
+.env
+.env.local
+.env.*.local
+*.env
+
+# --- Backend (Python / FastAPI) ---
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+**/.pytest_cache/
+Backend/venv/
+Backend/.venv/
+Backend/env/
+Backend/build/
+Backend/dist/
+Backend/*.egg-info/
+
+# --- Frontend (Node / React / Vite) ---
+Frontend/node_modules/
+Frontend/dist/
+Frontend/dist-ssr/
+Frontend/*.local
+Frontend/npm-debug.log*
+Frontend/yarn-debug.log*
+Frontend/yarn-error.log*
+Frontend/coverage/
+Frontend/.next/
+
+# --- Database Backups & Local Storage (CRITICAL) ---
+# Ignores the actual database data files so they don't leak or bloat the repo
+**/storage/
+**/PG_Backups/
+**/MSSQL_Backups/
+**/*.sql
+**/*.bak
+**/*.backup
+**/*.gz
+**/*.sqlite3
+**/*.db
+
+# --- Infrastructure & Docker ---
+.docker/
+**/db-data/
+docker-compose.override.yml
+
+# --- Editor & IDE Specific ---
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+.history/
+
+# --- Operating System Files ---
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+desktop.ini
+
+# --- Logs ---
+*.log
+logs/
+Backend/celerybeat-schedule
